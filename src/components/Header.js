@@ -3,7 +3,7 @@ import tickImage from "../assets/images/double-tick.png";
 import noteImage from "../assets/images/notes.png";
 import plusImage from "../assets/images/plus.png";
 import { useDispatch } from "react-redux";
-import { todoAdd } from "../redux/todoSection/todoActions";
+import { todoAdd, todoAllComplete, todoClearComplete } from "../redux/todoSection/todoActions";
 
 export default function Header() {
     const [input, setInput] = useState('');
@@ -17,6 +17,14 @@ export default function Header() {
         event.preventDefault();
         dispatch(todoAdd(input));
         setInput('');
+    }
+
+    const handleAllComplete = () => {
+        dispatch(todoAllComplete());
+    }
+
+    const handleCompleteClear = () => {
+        dispatch(todoClearComplete());
     }
 
     return (
@@ -37,11 +45,11 @@ export default function Header() {
             </form>
 
             <ul className="flex justify-between my-4 text-xs text-gray-500">
-                <li className="flex space-x-1 cursor-pointer">
+                <li className="flex space-x-1 cursor-pointer" onClick={handleAllComplete}>
                     <img className="w-4 h-4" src={tickImage} alt="Complete" />
                     <span>Complete All Tasks</span>
                 </li>
-                <li className="cursor-pointer">Clear completed</li>
+                <li className="cursor-pointer" onClick={handleCompleteClear}>Clear completed</li>
             </ul>
         </div>
     );
