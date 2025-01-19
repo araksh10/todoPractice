@@ -1,8 +1,8 @@
-import { todoSectionInitialState } from "./todoSectionInitialState";
+import todoSectionInitialState from "./todoSectionInitialState";
 import { TODOADD, TODOALLCOMPLETE, TODOCLEARCOMPLETE, TODOCOLORSELECT, TODODELETE, TODOTOGGLE } from "./todoActionTypes";
 
-const nextTodoId = (todos) => {
-    const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
+const nextTodoId = (todoS) => {
+    const maxId = todoS.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
     return maxId + 1;
 }
 
@@ -38,7 +38,7 @@ const todoSectionReducer = (state = todoSectionInitialState, action) => {
 
                 return {
                     ...todo,
-                    color: color
+                    color: todoColor
                 }
             })
         
