@@ -33,12 +33,12 @@ export const todoDelete = (todoId) => {
 
 export const todoAllComplete = () => {
     return {
-        type: TODOALLCOMPLETE
+        type: TODOALLCOMPLETE,
     }
 }
 
 export const todoClearComplete = () => {
     return {
-        type: TODOCLEARCOMPLETE
+        type: TODOCLEARCOMPLETE,
     }
 }
